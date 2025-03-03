@@ -1,0 +1,118 @@
+<h1>primer proyecto angular 17 jf dddd</h1>
+<h2>{{welcome}}</h2>
+<br>
+<ul>
+  @for (task of tasks(); track task) {
+  <li>
+    {{task}}
+  </li>
+  }
+</ul>
+
+<ul>
+  @for (task of tasks(); track $index) {
+  <li>{{$index}} {{task}}</li>
+  }@empty {
+  <li><strong>La lista esta vacía</strong></li>
+  }
+</ul>
+
+<hr>
+<h2>{{'hi'.repeat(4)}}</h2>
+<p>la suma de 3+3 es {{3 +3}}</p>
+<p>hi im {{name()}} mi edad es {{age}}</p>
+
+<hr>
+<input type="number" [value]="person.age">
+<button [disabled]="disabled">click me</button>
+<p>
+  person: {{person.name}}
+</p>
+
+<hr>
+<button (click)="clickHandler()">click me</button>
+<button (dblclick)="clickHandler()">click me</button>
+
+<p>(change)</p>
+<input type="number" [value]="person.age" (change)="changeHandler($event)">
+
+<p>(keydown)</p>
+<input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()">
+
+<hr>
+<h1>Signals</h1>
+<input type="text" [value]="name()" (change)="changeHandler($event)">
+<p>name: {{name()}}</p>
+
+<ul>
+  <p>total:{{tasks().length}}</p>
+  @for (task of tasks(); track task; let i = $index) {
+  <li>
+    {{i}} {{task}}
+  </li>
+  }
+</ul>
+
+<hr>
+@if (1 == 1) {
+<div>
+  My content
+</div>
+}
+@if (1 == 1) {
+<div>My content en nuevo if</div>
+}
+
+<hr>
+<div>
+  @switch (name()) {
+  @case ('john') {
+  <p>Nombre es john</p>
+  }
+  @case ('nicolas') {
+  <p>Nombre es nicolas</p>
+  }
+  @default {
+  <p>Nombre por defecto</p>
+  }
+  }
+</div>
+
+<hr>
+<h2>New switch structure</h2>
+<div>
+  @switch (name()) {
+  @case ('john') {
+  <p>Nombre es john</p>
+  }
+  @case ('nicolas') {
+  <p>Nombre es nicolas</p>
+  }
+  @default {
+  <p>Nombre por defecto</p>
+  }
+  }
+</div>
+
+<hr>
+<input type="color" [formControl]="colorControl">
+<p>color: {{colorControl.value}}</p>
+
+<svg>
+  <g>
+    <rect x="0" y="0" height="100" width="100" [attr.fill]="colorControl.value"></rect>
+  </g>
+</svg>
+
+<hr />
+<input type="number" [formControl]="widthControl">
+<span class="box" [style.width.px]="widthControl.value"></span>
+
+<hr>
+<p>
+  <input type="text" [formControl]="nameControl"><br>
+  <span class="message-error" [class.show]="nameControl.invalid && nameControl.touched">Nombre invalido</span>
+</p>
+<p>
+  <input type="text">
+</p>
